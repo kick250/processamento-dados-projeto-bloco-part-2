@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, text
 class Repository:
   @classmethod
   def build(cls):
-    string_connection = "mysql+mysqlconnector://root:123456@localhost/projeto_bloco"
+    string_connection = "mysql+mysqlconnector://root:@localhost/projeto_bloco"
     engine = create_engine(string_connection, echo=False)
     return cls(engine)
 
@@ -18,6 +18,6 @@ class Repository:
       try:
         results = res.fetchall()
       except:
-        pass
+        results = res
       connection.commit()
     return results

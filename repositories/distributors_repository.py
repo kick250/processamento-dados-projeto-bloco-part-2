@@ -16,10 +16,15 @@ class DistributorsRepository(Repository):
     return self.__create_distributor(results[0])
 
   def create(self, distributor):
-    pass #
+    result = self._execute(f"INSERT INTO distributors (name) values ('{distributor.name}')")
+    distributor.id = result.lastrowid
+
+    address = distributor.address
+    address_data = f"('{address.street}', '{address.city}', '{address.state}', '{address.number}', {distributor.id})"
+    self._execute(f"INSERT INTO addresses (street, city, state, number, distributor_id) values {address_data}")
 
   def delete_by_id(self, id):
-    pass #
+    pass
 
   def __create_distributor(self, row):
     id = row[0]
