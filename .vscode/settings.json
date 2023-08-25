@@ -3,5 +3,12 @@
     "spec"
   ],
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./spec",
+    "-p",
+    "test*.py"
+  ]
 }

@@ -1,19 +1,20 @@
 from actions.close_program import CloseProgram
+from actions.show_distributor import ShowDistributor
 import helper
 
 
 def read_option():
   options = (
-    { 'option': '0 - Sair', 'exec': CloseProgram() },
-    { 'option': '1 - Ver distribuidor', 'exec': CloseProgram() },
-    { 'option': '2 - Criar distribuidor', 'exec': CloseProgram() },
-    { 'option': '3 - Apagar distribuidor', 'exec': CloseProgram() },
-    { 'option': '4 - Ver produto', 'exec': CloseProgram() },
-    { 'option': '5 - Criar produto', 'exec': CloseProgram() },
-    { 'option': '6 - Apagar produto', 'exec': CloseProgram() },
-    { 'option': '7 - Ver pedido', 'exec': CloseProgram() },
-    { 'option': '8 - Criar pedido', 'exec': CloseProgram() },
-    { 'option': '9 - Apagar pedido', 'exec': CloseProgram() },
+    { 'option': '0 - Sair', 'exec': CloseProgram.build() },
+    { 'option': '1 - Ver distribuidor', 'exec': ShowDistributor.build() },
+    { 'option': '2 - Criar distribuidor', 'exec': CloseProgram.build() },
+    { 'option': '3 - Apagar distribuidor', 'exec': CloseProgram.build() },
+    { 'option': '4 - Ver produto', 'exec': CloseProgram.build() },
+    { 'option': '5 - Criar produto', 'exec': CloseProgram.build() },
+    { 'option': '6 - Apagar produto', 'exec': CloseProgram.build() },
+    { 'option': '7 - Ver pedido', 'exec': CloseProgram.build() },
+    { 'option': '8 - Criar pedido', 'exec': CloseProgram.build() },
+    { 'option': '9 - Apagar pedido', 'exec': CloseProgram.build() },
   )
   for option in options:
     print(option['option'])
