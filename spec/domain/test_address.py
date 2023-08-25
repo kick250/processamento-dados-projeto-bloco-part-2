@@ -39,7 +39,7 @@ def test_number():
 
 def test_full_address():
   street = "R. São José"
-  city = "Rio de janeiro"
+  city = "Rio de Janeiro"
   state = "RJ"
   number = 90
   address = Address(street, city, state, number)

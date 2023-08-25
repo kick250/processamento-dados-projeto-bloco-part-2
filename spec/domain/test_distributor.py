@@ -11,7 +11,7 @@ def test_name():
   assert distributor.id == 1
 
 def test_full_address():
-  address = Address("R. São José", "Rio de janeiro", "RJ", 90)
+  address = Address("R. São José", "Rio de Janeiro", "RJ", 90)
   expected_name = "Carlos distribuidor"
   distributor = Distributor(1, expected_name, address)
 
