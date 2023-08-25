@@ -19,7 +19,7 @@ class ShowDistributor:
       print(f'{distributor.id} {distributor.name}')
     distributors_ids = tuple(map(lambda x: x.id, distributors))
 
-    distributor_id = helper.read_int("Qual distribuidor voce deseja ver", options=distributors_ids)
+    distributor_id = helper.read_int("Qual distribuidor voce deseja ver: ", options=distributors_ids)
     distributor = self.__all_distributor.get_by_id(distributor_id)
 
     print(f"Id: {distributor.id}")

@@ -1,12 +1,13 @@
 class Distributor:
   def __init__(self, id, name, address):
+    self.id = id
     self.__id = id
     self.__name = name
     self.__address = address
 
-  @property
-  def id(self):
-    return self.__id
+  # @property
+  # def id(self):
+  #   return self.__id
 
   @property
   def name(self):
