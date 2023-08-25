@@ -28,3 +28,6 @@ class DistributorsRepository(Repository):
   def create(self, distributor):
     distributor.id = randint(10, 99)
     DistributorsRepository.__all_distributors.append(distributor)
+
+  def delete_by_id(self, id):
+    print(f"Deletando id {id}")
