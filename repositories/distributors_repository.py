@@ -24,7 +24,8 @@ class DistributorsRepository(Repository):
     self._execute(f"INSERT INTO addresses (street, city, state, number, distributor_id) values {address_data}")
 
   def delete_by_id(self, id):
-    pass
+    self._execute(f"DELETE FROM addresses WHERE distributor_id = {id}")
+    self._execute(f"DELETE FROM distributors WHERE id = {id}")
 
   def __create_distributor(self, row):
     id = row[0]
