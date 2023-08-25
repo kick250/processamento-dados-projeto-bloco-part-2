@@ -1,0 +1,23 @@
+CREATE TABLE distributors (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE addresses (
+    street VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    state VARCHAR(255) NOT NULL,
+    number INT NOT NULL,
+    distributor_id INT NOT NULL,
+    FOREIGN KEY (distributor_id) REFERENCES distributors(id)
+);
+
+INSERT INTO distributors (name) VALUES ("Lojas americanas rj"), ("Lojas carlos Silva");
+INSERT INTO addresses (street, city, state, number, distributor_id) VALUES
+    ('R. São José', 'Rio de janeiro', 'RJ', 90, 1),
+    ('Ladeira da gloria', 'Rio de janeiro', 'RJ', 26, 2);
+
+
+select * from distributors;
+select * from addresses;

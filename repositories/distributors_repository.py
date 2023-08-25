@@ -2,32 +2,30 @@ from exceptions.distributor_not_found import DistributorNotFound
 from repositories.repository import Repository
 from domain.distributor import Distributor
 from domain.address import Address
-from random import randint
-
 
 class DistributorsRepository(Repository):
-  __all_distributors = [
-    Distributor(1, "Lojas americanas", Address("R. São José", "Rio de janeiro", "RJ", 90)),
-    Distributor(4, "Lojas teste", Address("Ladeira da gloria", "Rio de janeiro", "RJ", 26))
-  ]
-
-  @classmethod
-  def build(cls):
-    return cls()
-
   def get_all(self):
-    return DistributorsRepository.__all_distributors
+    results = self._execute("SELECT * FROM distributors JOIN addresses ON addresses.distributor_id = distributors.id")
+    return tuple(map(self.__create_distributor, results))
 
   def get_by_id(self, id):
-    distributors = self.get_all()
-    for distributor in distributors:
-      if distributor.id == id: return distributor
+    results = self._execute(f"SELECT * FROM distributors JOIN addresses ON addresses.distributor_id = distributors.id WHERE distributors.id = {id}")
 
-    raise DistributorNotFound()
+    if len(results) == 0: raise DistributorNotFound()
+
+    return self.__create_distributor(results[0])
 
   def create(self, distributor):
-    distributor.id = randint(10, 99)
-    DistributorsRepository.__all_distributors.append(distributor)
+    pass #
 
   def delete_by_id(self, id):
-    print(f"Deletando id {id}")
+    pass #
+
+  def __create_distributor(self, row):
+    id = row[0]
+    name = row[1]
+    street = row[2]
+    city = row[3]
+    state = row[4]
+    number = row[5]
+    return Distributor(id, name, Address(street, city, state, number))
