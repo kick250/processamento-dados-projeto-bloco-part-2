@@ -1,0 +1,8 @@
+- ver distribuidor
+- criar distribuidor(com address)
+- apagar distribuidor
+- criar produto
+- apagar produto
+- ver order
+- criar order
+- apagar order
