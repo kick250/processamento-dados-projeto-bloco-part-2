@@ -23,6 +23,13 @@ class ProductsRepository(Repository):
         ('{product.name}', {product.price}, {product.distributor_id});
     """)
 
+  def delete_by_id(self, id):
+    self._execute(f"""
+      DELETE FROM products
+        WHERE id = {id}
+    """)
+
+
   def __build_product(self, row):
     id = row[0]
     name = row[1]
