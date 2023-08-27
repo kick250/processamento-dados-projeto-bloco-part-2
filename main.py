@@ -5,6 +5,9 @@ from actions.delete_distributor import DeleteDistributor
 from actions.show_product import ShowProduct
 from actions.create_product import CreateProduct
 from actions.delete_product import DeleteProduct
+from actions.show_order import ShowOrder
+from actions.create_order import CreateOrder
+from actions.delete_order import DeleteOrder
 import helper
 
 
@@ -17,9 +20,9 @@ def read_option():
     { 'option': '4 - Ver produto', 'exec': ShowProduct.build() },
     { 'option': '5 - Criar produto', 'exec': CreateProduct.build() },
     { 'option': '6 - Apagar produto', 'exec': DeleteProduct.build() },
-    { 'option': '7 - Ver pedido', 'exec': CloseProgram.build() },
-    { 'option': '8 - Criar pedido', 'exec': CloseProgram.build() },
-    { 'option': '9 - Apagar pedido', 'exec': CloseProgram.build() },
+    { 'option': '7 - Ver pedido', 'exec': ShowOrder.build() },
+    { 'option': '8 - Criar pedido', 'exec': CreateOrder.build() },
+    { 'option': '9 - Apagar pedido', 'exec': DeleteOrder.build() },
   )
   print()
   for option in options:
