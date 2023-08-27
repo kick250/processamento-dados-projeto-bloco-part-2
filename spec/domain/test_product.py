@@ -20,3 +20,6 @@ def test_price():
 
 def test_distributor_id():
   assert create_product().distributor_id == 1
+
+def test_distributor_name():
+  assert create_product().distributor_name == "Lojas americanas"

@@ -20,3 +20,9 @@ class Product:
   @property
   def distributor_id(self):
     return self.__distributor.id
+
+  @property
+  def distributor_name(self):
+    if self.__distributor == None: return ""
+
+    return self.__distributor.name

@@ -1,11 +1,11 @@
 - ver distribuidor => OK
 - criar distribuidor(com address) => OK
 - apagar distribuidor => OK
-- criar produto
-- ver produto
-- apagar produto
-- ver order
-- criar order
-- apagar order
-- criar conexao com o banco
+- criar produto =>
+- ver produto =>
+- apagar produto =>
+- ver order =>
+- criar order =>
+- apagar order =>
+- criar conexao com o banco => OK
 - criar notificacao para o caso de entidade com dependentes

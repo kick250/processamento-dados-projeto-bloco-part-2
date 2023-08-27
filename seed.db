@@ -13,11 +13,21 @@ CREATE TABLE addresses (
     FOREIGN KEY (distributor_id) REFERENCES distributors(id)
 );
 
+CREATE TABLE products (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    price FLOAT NOT NULL,
+    distributor_id INTEGER NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (distributor_id) REFERENCES distributors(id)
+)
+
 INSERT INTO distributors (name) VALUES ("Lojas americanas rj"), ("Lojas carlos Silva");
 INSERT INTO addresses (street, city, state, number, distributor_id) VALUES
     ('R. São José', 'Rio de janeiro', 'RJ', 90, 1),
     ('Ladeira da gloria', 'Rio de janeiro', 'RJ', 26, 2);
-
+INSERT INTO products (name, price, distributor_id) VALUES ('Iphone 13', 9999.99, 1), ('Iphone 12', 5999.99, 3);
 
 select * from distributors;
 select * from addresses;
+select * from products;
