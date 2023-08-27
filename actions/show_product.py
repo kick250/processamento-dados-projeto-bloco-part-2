@@ -19,7 +19,10 @@ class ShowProduct:
     product_id = helper.read_int("Qual você deseja ver? ", options=product_ids)
     product = self.__all_products.get_by_id(product_id)
 
+    print()
+    print("---------------------------")
     print(f"Id: {product.id}")
     print(f"Nome: {product.name}")
     print(f"Preço: {product.price}")
     print(f"Distribuidor: {product.distributor_name}")
+    print("---------------------------")

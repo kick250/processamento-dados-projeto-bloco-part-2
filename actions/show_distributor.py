@@ -21,7 +21,9 @@ class ShowDistributor:
 
     distributor_id = helper.read_int("Qual distribuidor voce deseja ver: ", options=distributors_ids)
     distributor = self.__all_distributor.get_by_id(distributor_id)
-
+    print()
+    print("---------------------------")
     print(f"Id: {distributor.id}")
     print(f"Nome: {distributor.name}")
     print(f"Endereço: {distributor.full_address}")
+    print("---------------------------")
