@@ -8,16 +8,22 @@ class ProductsRepository(Repository):
   def get_all(self):
     results = self._execute(self.__base_query())
 
-    return tuple(map(self.__create_product, results))
+    return tuple(map(self.__build_product, results))
 
   def get_by_id(self, id):
     results = self._execute(f"""
       {self.__base_query()}
         WHERE products.id = {id};
     """)
-    return self.__create_product(results[0])
+    return self.__build_product(results[0])
 
-  def __create_product(self, row):
+  def create(self, product):
+    self._execute(f"""
+      INSERT INTO products (name, price, distributor_id) VALUES
+        ('{product.name}', {product.price}, {product.distributor_id});
+    """)
+
+  def __build_product(self, row):
     id = row[0]
     name = row[1]
     price = row[2]
