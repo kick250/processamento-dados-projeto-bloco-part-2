@@ -1,3 +1,4 @@
+import test
 from domain.distributor import Distributor
 from domain.address import Address
 
