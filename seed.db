@@ -20,13 +20,28 @@ CREATE TABLE products (
     distributor_id INTEGER NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (distributor_id) REFERENCES distributors(id)
+);
+
+CREATE TABLE orders (
+    id INT NOT NULL AUTO_INCREMENT,
+    date DATE NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE order_product (
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
 )
+
 
 INSERT INTO distributors (name) VALUES ("Lojas americanas rj"), ("Lojas carlos Silva");
 INSERT INTO addresses (street, city, state, number, distributor_id) VALUES
     ('R. São José', 'Rio de janeiro', 'RJ', 90, 1),
     ('Ladeira da gloria', 'Rio de janeiro', 'RJ', 26, 2);
 INSERT INTO products (name, price, distributor_id) VALUES ('Iphone 13', 9999.99, 1), ('Iphone 12', 5999.99, 3);
+INSERT INTO orders (date) VALUES ('2020-12-20'), ('2021-10-23');
 
 select * from distributors;
 select * from addresses;
