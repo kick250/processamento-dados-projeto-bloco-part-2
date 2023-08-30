@@ -1,10 +1,10 @@
 - ver distribuidor => OK
 - criar distribuidor(com address) => OK
 - apagar distribuidor => OK
-- criar produto =>
-- ver produto =>
-- apagar produto =>
-- ver order =>
+- criar produto => OK
+- ver produto => OK
+- apagar produto => OK
+- ver order => OK
 - criar order =>
 - apagar order =>
 - criar conexao com o banco => OK

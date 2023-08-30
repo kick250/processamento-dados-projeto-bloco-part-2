@@ -29,6 +29,13 @@ class ProductsRepository(Repository):
         WHERE id = {id}
     """)
 
+  def get_by_order_id(self, order_id):
+    results = self._execute(f"""
+      {self.__base_query()}
+      JOIN order_product ON products.id = order_product.product_id
+      WHERE order_product.order_id = {order_id};
+    """)
+    return tuple(map(self.__build_product, results))
 
   def __build_product(self, row):
     id = row[0]
