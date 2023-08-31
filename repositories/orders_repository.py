@@ -30,6 +30,10 @@ class OrdersRepository(Repository):
     self.__all_products.delete_products_from_order_id(order.id)
     self.__all_products.create_products_from_order(order)
 
+  def delete_by_id(self, order_id):
+    self.__all_products.delete_products_from_order_id(order_id)
+    self._execute(f"DELETE FROM orders WHERE id = {order_id};")
+
   def __build_order(self, row):
     id = row[0]
     date = row[1]
