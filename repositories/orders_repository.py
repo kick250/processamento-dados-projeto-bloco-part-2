@@ -23,6 +23,12 @@ class OrdersRepository(Repository):
     """)
     return self.__build_order(results[0])
 
+  def create(self, order):
+    result = self._execute(f"INSERT INTO orders (date) VALUES ('{str(order.date)}');")
+    order.id = result.lastrowid
+
+    self.__all_products.delete_products_from_order_id(order.id)
+    self.__all_products.create_products_from_order(order)
 
   def __build_order(self, row):
     id = row[0]

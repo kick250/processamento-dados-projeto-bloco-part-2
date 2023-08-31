@@ -37,6 +37,19 @@ class ProductsRepository(Repository):
     """)
     return tuple(map(self.__build_product, results))
 
+  def delete_products_from_order_id(self, order_id):
+    self._execute(f"""
+      DELETE FROM order_product
+        WHERE order_id = {order_id};
+    """)
+
+  def create_products_from_order(self, order):
+    for product in order.products:
+      self._execute(f"""
+        INSERT INTO order_product (order_id, product_id)
+          VALUES ({order.id}, {product.id});
+      """)
+
   def __build_product(self, row):
     id = row[0]
     name = row[1]

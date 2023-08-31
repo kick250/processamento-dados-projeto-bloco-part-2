@@ -1,12 +1,8 @@
 class Order:
   def __init__(self, id, date, products):
-    self.__id = id
+    self.id = id
     self.__date = date
     self.__products = products
-
-  @property
-  def id(self):
-    return self.__id
 
   @property
   def date(self):

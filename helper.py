@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def read_int(message, options = None, positive = False):
   while True:
     try:
@@ -41,3 +44,24 @@ def read_string(message, empty_valid = True):
       continue
 
     return value
+
+def read_date(message):
+  time = None
+  while time == None:
+    try:
+      time = datetime.strptime(input(message), "%d/%m/%Y")
+    except ValueError:
+      print("Valor invalido.")
+  return time.date()
+
+def confirm(message):
+  while True:
+    response = read_string(message)
+    if response.upper() == "S":
+      return True
+    elif response.upper() == "N":
+      return False
+    else:
+      print("A resposta deve ser S ou N.")
+
+
