@@ -15,6 +15,9 @@ class DeleteDistributor:
   def execute(self):
     print("Distribuidores:")
     distributors = self.__all_distributor.get_all()
+
+    if len(distributors) == 0: return print("Não existem distribuidores")
+
     for distributor in distributors:
       print(f'{distributor.id} {distributor.name}')
     distributors_ids = tuple(map(lambda x: x.id, distributors))

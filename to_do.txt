@@ -5,7 +5,12 @@
 - ver produto => OK
 - apagar produto => OK
 - ver order => OK
-- criar order =>
-- apagar order =>
+- criar order => OK
+- apagar order => OK
 - criar conexao com o banco => OK
-- criar notificacao para o caso de entidade com dependentes
+- criar notificacao para o caso de entidade com dependentes => OK
+- formatar data exibida do pedido =>
+- exibir fornecedor ao exibir pedido =>
+- permitir editar distribuidor =>
+- permitir editar produto =>
+- permitir editar order =>

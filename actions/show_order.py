@@ -12,6 +12,9 @@ class ShowOrder:
 
   def execute(self):
     orders = self.__all_orders.get_all()
+
+    if len(orders) == 0: return print("Não existem pedidos.")
+
     order_ids = []
     for order in orders:
       order_ids.append(order.id)

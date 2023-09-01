@@ -13,6 +13,9 @@ class DeleteProduct:
   def execute(self):
     print("Produtos: ")
     products = self.__all_products.get_all()
+
+    if len(products) == 0: return print("Não existem produtos.")
+
     for product in products:
       print(f"{product.id} - {product.name}")
     product_ids = tuple(map(lambda x: x.id, products))

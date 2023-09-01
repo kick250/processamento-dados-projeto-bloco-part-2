@@ -1,3 +1,4 @@
+from exceptions.products_do_not_exist_exception import ProductsDoNotExistException
 from repositories.orders_repository import OrdersRepository
 from repositories.products_repository import ProductsRepository
 from domain.order import Order
@@ -14,15 +15,21 @@ class CreateOrder:
     self.__all_products = all_products
 
   def execute(self):
-    date = helper.read_date("Qual a data do pedido(dd/mm/yyyy)? ")
-    products = self.read_products()
-    order = Order(None, date, products)
-    self.__all_orders.create(order)
+    try:
+      date = helper.read_date("Qual a data do pedido(dd/mm/yyyy)? ")
+      products = self.read_products()
+      order = Order(None, date, products)
+      self.__all_orders.create(order)
+    except ProductsDoNotExistException as e:
+      print(str(e))
+
 
   def read_products(self):
     selected_products = []
-
     products = self.__all_products.get_all()
+
+    if len(products) == 0: raise ProductsDoNotExistException()
+
     product_ids = tuple(map(lambda x: x.id, products))
     while True:
       for product in products:
