@@ -18,15 +18,15 @@ class ShowOrder:
     order_ids = []
     for order in orders:
       order_ids.append(order.id)
-      print(f"{order.id} - {order.date}")
+      print(f"{order.id} - {order.formatted_date}")
 
     order_id = helper.read_int("Qual você deseja ver? ", options=order_ids)
 
     order = self.__all_orders.get_by_id(order_id)
     print("-------------------------")
     print(f"Id: {order.id}")
-    print(f"Data: {order.date}")
+    print(f"Data: {order.formatted_date}")
     print("produtos: ")
     for product in order.products:
-      print(f"- {product.name}")
+      print(f"- {product.name}({product.distributor_name})")
     print("-------------------------")

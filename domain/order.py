@@ -11,3 +11,9 @@ class Order:
   @property
   def products(self):
     return self.__products
+
+  @property
+  def formatted_date(self):
+    if self.date == None: return ""
+
+    return self.date.strftime("%d/%m/%Y")
