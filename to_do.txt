@@ -11,6 +11,6 @@
 - criar notificacao para o caso de entidade com dependentes => OK
 - formatar data exibida do pedido => OK
 - exibir fornecedor ao exibir pedido => OK
-- permitir editar distribuidor =>
-- permitir editar produto =>
-- permitir editar order =>
+- permitir editar distribuidor => OK
+- permitir editar produto => OK
+- permitir editar order => OK

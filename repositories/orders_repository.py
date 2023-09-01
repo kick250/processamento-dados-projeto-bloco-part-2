@@ -27,6 +27,11 @@ class OrdersRepository(Repository):
     result = self._execute(f"INSERT INTO orders (date) VALUES ('{str(order.date)}');")
     order.id = result.lastrowid
 
+    self.__all_products.create_products_from_order(order)
+
+  def update(self, order):
+    result = self._execute("UPDATE orders SET date = '{}' WHERE id = {};".format(str(order.date), order.id))
+
     self.__all_products.delete_products_from_order_id(order.id)
     self.__all_products.create_products_from_order(order)
 
