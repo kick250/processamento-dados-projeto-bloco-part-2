@@ -1,3 +1,4 @@
+from exceptions.integrity_error import IntegrityError
 from repositories.repository import Repository
 from domain.address import Address
 from domain.distributor import Distributor
@@ -24,10 +25,13 @@ class ProductsRepository(Repository):
     """)
 
   def delete_by_id(self, id):
-    self._execute(f"""
-      DELETE FROM products
-        WHERE id = {id}
-    """)
+    try:
+      self._execute(f"""
+        DELETE FROM products
+          WHERE id = {id}
+      """)
+    except IntegrityError as e:
+      print(str(e))
 
   def get_by_order_id(self, order_id):
     results = self._execute(f"""
