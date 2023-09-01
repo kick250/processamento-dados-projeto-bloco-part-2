@@ -1,4 +1,5 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, exc
+from exceptions.integrity_error import IntegrityError
 
 
 class Repository:
@@ -12,12 +13,23 @@ class Repository:
     self.__engine = engine
 
   def _execute(self, query):
-    results = None
-    with self.__engine.connect() as connection:
-      res = connection.execute(text(query))
-      try:
-        results = res.fetchall()
-      except:
-        results = res
-      connection.commit()
-    return results
+    try:
+      results = None
+      queries = query.strip().split(";")
+      self.__remove_empty_queries(queries)
+      with self.__engine.connect() as connection:
+        res = None
+        for query in queries:
+          res = connection.execute(text(query))
+        try:
+          results = res.fetchall()
+        except:
+          results = res
+        connection.commit()
+      return results
+    except exc.IntegrityError:
+      raise IntegrityError()
+
+  def __remove_empty_queries(self, queries):
+    while("" in queries):
+      queries.remove("")
