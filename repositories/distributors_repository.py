@@ -24,6 +24,14 @@ class DistributorsRepository(Repository):
     address_data = f"('{address.street}', '{address.city}', '{address.state}', '{address.number}', {distributor.id})"
     self._execute(f"INSERT INTO addresses (street, city, state, number, distributor_id) values {address_data}")
 
+  def update(self, distributor):
+    address = distributor.address
+    self._execute("""
+      UPDATE distributors SET name = '{}' WHERE id = {};
+      UPDATE addresses SET street = '{}', city = '{}', state = '{}', number = {} WHERE distributor_id = {};
+    """.format(distributor.name, distributor.id,
+               address.street, address.city, address.state, address.number, distributor.id))
+
   def delete_by_id(self, id):
     try:
       self._execute(f"""
