@@ -33,6 +33,12 @@ class ProductsRepository(Repository):
     except IntegrityError as e:
       print(str(e))
 
+  def update(self, product):
+    self._execute("""
+      UPDATE products SET name = '{}', price = {}, distributor_id = {}
+        WHERE id = {};
+    """.format(product.name, product.price, product.distributor_id, product.id))
+
   def get_by_order_id(self, order_id):
     results = self._execute(f"""
       {self.__base_query()}

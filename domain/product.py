@@ -1,13 +1,9 @@
 class Product:
   def __init__(self, id, name, price, distributor):
-    self.__id = id
+    self.id = id
     self.__name = name
     self.__price = price
     self.__distributor = distributor
-
-  @property
-  def id(self):
-    return self.__id
 
   @property
   def name(self):
